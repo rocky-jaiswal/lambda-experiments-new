@@ -3,6 +3,12 @@ import aws from 'aws-sdk'
 import { readFileAsync } from '../utils/fileUtils'
 import DTO from '../dto'
 
+aws.config.update({
+  region: 'eu-central-1',
+  accessKeyId: 'changeme',
+  secretAccessKey: 'changeme'
+})
+
 const s3 = new aws.S3()
 
 const uploadToS3 = async (dto: DTO) => {
@@ -10,8 +16,8 @@ const uploadToS3 = async (dto: DTO) => {
     const file = await readFileAsync(dto.pdfPath)
 
     const params = {
-      Bucket: 'test-statement-foo',
-      Key: dto.templateId!!,
+      Bucket: 'de-rockyj-test-statement-foo',
+      Key: `${dto.templateId!!}.pdf`,
       Body: file
     }
 

@@ -24,7 +24,8 @@ const serverlessConfiguration: Serverless = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1'
-    }
+    },
+    region: 'eu-central-1'
   },
   functions: {
     hello: {
